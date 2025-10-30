@@ -1,6 +1,6 @@
-<div class="container">
-    <h1 class="text-center ">BestSeller Products</h1>
-    <p class="text-center">Latin Words. Combined with a handfull of model santence structures to generate loremipsum
+<div class="container pt-3">
+    <h1 class="text-center header-text">BestSeller Products</h1>
+    <p class="text-center" style="color: #179117;">Latin Words. Combined with a handfull of model santence structures to generate loremipsum
         which looks resonable</p>
         <div class="row g-4">
             <div class="col-12 col-md-4 col-lg-3 d-flex" *ngFor="let product of productList">
@@ -8,15 +8,15 @@
                 <img class="card-img-top product-image" [src]="product.productImageUrl" alt="Product image">
           
                 <div class="card-body d-flex flex-column justify-content-between">
-                  <div>
+                  <div text-center>
                     <h5 class="card-title text-center heading-underline">{{ product.productName }}</h5>
                     <p class="card-text">{{ product.productShortName }}</p>
                     <p class="card-text">{{ product.productPrice | currency:'$' }}</p>
                   </div>
           
                   <div class="text-center mt-auto">
-                    <button mat-stroked-button class="btn-uniq" (click)="addToCart(product.productId)">
-                      <mat-icon>shopping_cart</mat-icon> Add to Cart
+                    <button  mat-stroked-button class="btn-uniq" (click)="addToCart(product.productId)">
+                       Add to Cart
                     </button>
                   </div>
                 </div>

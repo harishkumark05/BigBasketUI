@@ -16,14 +16,15 @@
     <button mat-button routerLink="/categories">Categories</button>
   </mat-toolbar>
   <router-outlet></router-outlet> -->
-  <mat-toolbar color="secondary">
+  <mat-toolbar color="secondary" class="navigation-toolbar">
     <!-- Menu button -->
     <button mat-icon-button aria-label="Menu">
       <mat-icon>menu</mat-icon>
     </button>
   
     <!-- App title -->
-    <span>Shopping Admin</span>
+    <span style="color: red;">big</span><span style="color:#000000c2">basket</span>
+    
   
     <!-- Add some space before the buttons -->
     <span class="example-spacer"></span>
@@ -33,13 +34,13 @@
     <button mat-button routerLink="/categories">Categories</button>
   
     <!-- Icons on the right -->
-    <span class="example-spacer"></span>
+    <!-- <span class="example-spacer"></span>
     <button mat-icon-button aria-label="Favorite">
       <mat-icon>favorite</mat-icon>
     </button>
     <button mat-icon-button aria-label="Share">
       <mat-icon>share</mat-icon>
-    </button>
+    </button> -->
   </mat-toolbar>
   
   <router-outlet></router-outlet>

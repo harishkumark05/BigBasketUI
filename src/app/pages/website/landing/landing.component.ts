@@ -26,7 +26,7 @@ getAllCategories(){
 }
 getCartByCustomer(){
   this.productService.getCartDataByCustId(2529).subscribe((res:any)=>{
-       debugger
+      //  debugger
        this.cartItems = res.data;
   })
 }
