@@ -7,10 +7,15 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./landing.component.css']
 })
 export class LandingComponent {
-constructor(private productService:ProductService){}
+
 productList:any[] = [];
 categoryList:any[] = [];
 cartItems:any[] = [];
+constructor(private productService:ProductService){
+  this.productService.cartUpdated$?.subscribe((res:any)=>{
+    this.getCartByCustomer()
+  })
+}
 ngOnInit(){
   this.getCartByCustomer();
 }
@@ -27,5 +32,10 @@ getCartByCustomer(){
 }
 getTotalPrice(): number {
   return this.cartItems.reduce((total, item) => total + item.productPrice * item.quantity, 0);
+}
+remove(id:any){
+  this.productService.removeProductByCartId(id).subscribe((res:any)=>{
+        this.getCartByCustomer()
+  })
 }
 }

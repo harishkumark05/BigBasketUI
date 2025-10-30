@@ -22,8 +22,15 @@
         <div class="p-2" style="width: 250px;">
             <div *ngIf="cartItems.length; else emptyCart">
               <div *ngFor="let item of cartItems" class="d-flex justify-content-between mb-1">
+                <span><img [src]="item.productImageUrl"  class="cart-img" alt=""></span>
+                
                 <span>{{ item.productName }} (x{{ item.quantity }})</span>
                 <span>₹{{ item.productPrice * item.quantity }}</span>
+                <!-- <mat-icon (click)="remove(item.cartId); $event.stopPropagation() ">close</mat-icon> -->
+                <button mat-icon-button color="warn" (click)="remove(item.cartId); $event.stopPropagation()">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                  
               </div>
               <hr />
               <div class="d-flex justify-content-between fw-bold">

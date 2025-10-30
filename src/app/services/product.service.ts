@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Constant } from './constant';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
+  public cartUpdated$:Subject<boolean> = new Subject();
   getALlProductsCategory(){
     return this.http.get(`/api/${Constant.METHODS.GET_ALL_CATEGORY}`);
   }
@@ -36,6 +38,9 @@ export class ProductService {
   }
   getCartDataByCustId(id:number){
     return this.http.get(`/api/${Constant.METHODS.GET_CART_BY_CUSTOMER_ID}${id}`)
+  }
+  removeProductByCartId(id:number){
+    return this.http.get(`/api/${Constant.METHODS.REMOVE_CART}${id}`)
   }
 
 }

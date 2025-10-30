@@ -24,3 +24,9 @@
   width: 100%;
 }
 
+.cart-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover; /* ensures image fills box without distortion */
+  border-radius: 5px; /* optional — makes corners smooth */
+}

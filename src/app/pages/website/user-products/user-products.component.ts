@@ -31,6 +31,7 @@ productList:any[] = [];
       // console.log(res)
       if(res.result){
         console.log('product added to cart')
+        this.productService.cartUpdated$?.next(true);
       }else{
         console.log('error product not added to cart')
       }
