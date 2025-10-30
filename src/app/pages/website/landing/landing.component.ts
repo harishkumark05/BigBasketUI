@@ -10,17 +10,22 @@ export class LandingComponent {
 constructor(private productService:ProductService){}
 productList:any[] = [];
 categoryList:any[] = [];
+cartItems:any[] = [];
 ngOnInit(){
-  this.getAllProducts();
-}
-getAllProducts(){
-  this.productService.getAllProducts().subscribe((res:any)=>{
-     this.productList = res.data;
-  })
+  this.getCartByCustomer();
 }
 getAllCategories(){
   this.productService.getALlProductsCategory().subscribe((res:any)=>{
     this.categoryList =res.data;
   })
+}
+getCartByCustomer(){
+  this.productService.getCartDataByCustId(2529).subscribe((res:any)=>{
+       debugger
+       this.cartItems = res.data;
+  })
+}
+getTotalPrice(): number {
+  return this.cartItems.reduce((total, item) => total + item.productPrice * item.quantity, 0);
 }
 }

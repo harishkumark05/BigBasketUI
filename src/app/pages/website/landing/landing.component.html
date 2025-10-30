@@ -16,14 +16,27 @@
     </mat-menu>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
         [matMenuTriggerFor]="menu3">
-        <mat-icon>favorite</mat-icon>
+        <mat-icon>shopping_cart</mat-icon>
     </button>
     <mat-menu #menu3="matMenu">
-        <div class="row">
-            <div class="col-12">Cart 1</div>
-            <div class="col-12">Cart 2</div>
-
-        </div>
+        <div class="p-2" style="width: 250px;">
+            <div *ngIf="cartItems.length; else emptyCart">
+              <div *ngFor="let item of cartItems" class="d-flex justify-content-between mb-1">
+                <span>{{ item.productName }} (x{{ item.quantity }})</span>
+                <span>₹{{ item.productPrice * item.quantity }}</span>
+              </div>
+              <hr />
+              <div class="d-flex justify-content-between fw-bold">
+                <span>Total</span>
+                <span>₹{{ getTotalPrice() }}</span>
+              </div>
+              <button mat-raised-button color="primary" class="mt-2 w-100">Checkout</button>
+            </div>
+        
+            <ng-template #emptyCart>
+              <div class="text-center text-muted py-2">🛒 Cart is empty</div>
+            </ng-template>
+          </div>
     </mat-menu>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>share</mat-icon>

@@ -31,4 +31,11 @@ export class ProductService {
   deleteProduct(id:number){
     return this.http.get(`/api/${Constant.METHODS.DELETE_PRODUCT}?id=${id}`)
   }
+  addToCart(obj:any){
+    return this.http.post(`/api/${Constant.METHODS.ADD_TO_CART}`,obj)
+  }
+  getCartDataByCustId(id:number){
+    return this.http.get(`/api/${Constant.METHODS.GET_CART_BY_CUSTOMER_ID}${id}`)
+  }
+
 }
