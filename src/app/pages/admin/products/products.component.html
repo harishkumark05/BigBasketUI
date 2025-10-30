@@ -1,0 +1,164 @@
+<div class="container-fluid">
+    <div class="row align-items-stretch">
+        <!-- Main product area -->
+        <div [ngClass]="isSidePanelVisible ? 'col-lg-8 d-flex' : 'col-lg-12 d-flex'">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h5 class="mb-0">New Products</h5>
+                        </div>
+                        <div class="col-4 text-end">
+                            <button class="btn btn-primary" *ngIf="!isSidePanelVisible" (click)="openSidePanel()">
+                                New
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let product of productsList.slice(-10)">
+                            <div class="card h-100">
+                                <img class="card-img-top" [src]="product.productImageUrl" alt="Product image">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.productName }}</h5>
+                                    <p class="card-text">{{ product.categoryName }}</p>
+                                    <a  class="btn btn-primary" (click)="onEdit(product)">Edit</a>
+                                    <a  class="btn btn-primary" (click)="onDelete(product)">Delete</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div class="col-lg-4 d-flex" *ngIf="isSidePanelVisible">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h5 class="mb-0">Add New Product</h5>
+                        </div>
+                        <div class="col-4 text-end">
+                            <button class="btn btn-danger" (click)="closeSidePanel()">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                          <div class="mb-3 col-6">
+                            <label class="form-label">ProductSku</label>
+                            <input
+                              type="text"
+                              [(ngModel)]="productObj.ProductSku"
+                              name="ProductSku"
+                              class="form-control"
+                              placeholder="SKU"
+                            />
+                          </div>
+                      
+                          <div class="mb-3 col-6">
+                            <label class="form-label">Product name</label>
+                            <input
+                              type="text"
+                              [(ngModel)]="productObj.ProductName"
+                              name="ProductName"
+                              class="form-control"
+                              placeholder="Enter name"
+                            />
+                          </div>
+                      
+                          <div class="mb-3 col-6">
+                            <label class="form-label">Product Price</label>
+                            <input
+                              type="number"
+                              [(ngModel)]="productObj.ProductPrice"
+                              name="ProductPrice"
+                              class="form-control"
+                              placeholder="price"
+                            />
+                          </div>
+                      
+                          <div class="mb-3 col-6">
+                            <label class="form-label">Product Short name</label>
+                            <input
+                              type="text"
+                              [(ngModel)]="productObj.ProductShortName"
+                              name="ProductShortName"
+                              class="form-control"
+                              placeholder="Enter Short name"
+                            />
+                          </div>
+                      
+                          <div class="mb-3 col-6">
+                            <label class="form-label">Time Span</label>
+                            <input
+                              type="date"
+                              [(ngModel)]="productObj.DeliveryTimeSpan"
+                              name="DeliveryTimeSpan"
+                              class="form-control"
+                              placeholder="Date of arrival"
+                            />
+                          </div>
+                      
+                          <div class="mb-3 col-6">
+                            <label class="form-label">Product Category</label>
+                        
+                            <select [(ngModel)]="productObj.CategoryId" name="CategoryId" class="form-control">
+                                <option  *ngFor="let cate of categoryList" [value]="cate.categoryId">
+                                    {{cate.categoryName}}
+                                </option>
+                            </select>
+                            
+                          </div>
+                      
+                          <div class="mb-3 col-12">
+                            <label class="form-label">Image</label>
+                            <input
+                              type="text"
+                              [(ngModel)]="productObj.ProductImageUrl"
+                              name="ProductImageUrl"
+                              class="form-control"
+                              placeholder="Enter image URL"
+                            />
+                          </div>
+                      
+                          <div class="mb-3 col-12">
+                            <label class="form-label">Product Description</label>
+                            <textarea
+                              [(ngModel)]="productObj.ProductDescription"
+                              name="ProductDescription"
+                              class="form-control"
+                              placeholder="Enter Description"
+                            ></textarea>
+                          </div>
+                        </div>
+                      
+                        <!-- <div class="btn-el">
+                          <button class="btn btn-success">Save</button>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-success">Reset</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-success" *ngIf="productObj.ProductId ===0" (click)="onSave()">Create Product</button>
+                                <button class="btn btn-primary" *ngIf="productObj.ProductId !== 0" (click)="onUpdate()">Update Product</button>
+
+                            </div>
+                        </div>
+                      </form>
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

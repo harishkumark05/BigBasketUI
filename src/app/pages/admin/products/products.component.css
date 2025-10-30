@@ -1,0 +1,13 @@
+.container-fluid{
+    margin-top:10px;
+}
+.card2{
+    margin: 0 5px;
+}
+
+.btn-el{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}

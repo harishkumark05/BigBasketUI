@@ -1,0 +1,26 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .btn-uniq {
+    background-color: #1e88e5; /* custom blue */
+    color: white;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: none; /* remove uppercase */
+    padding: 10px 20px;
+  }
+  
+  .btn-uniq:hover {
+    background-color: #1565c0; /* darker on hover */
+  }
+  .heading-underline {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-color: #1976d2;
+  }
+.product-image {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+

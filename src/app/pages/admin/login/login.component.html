@@ -1,0 +1,24 @@
+<div class="parent">
+    <div class="container">
+        <div class="left-panel">
+          <h1>LOGIN</h1>
+        </div>
+        <div class="right-panel">
+          <div class="login-form">
+            <h2>Ingresar a su Cuenta</h2>
+        <form >
+            <div class="input-group">
+                <label for="username">user name</label>
+                <input type="text" name="userName"  placeholder="username" [(ngModel)]="loginObj.userName">
+              </div>
+              <div class="input-group">
+                <label for="password">password</label>
+                <input type="password" name="password"  placeholder="********" [(ngModel)]="loginObj.password">
+                <span class="password-toggle"><i class="fas fa-eye"></i></span>
+              </div>
+              <button class="btn-login" type="button" (click)="login()">Entrar</button>
+        </form>
+          </div>
+        </div>
+      </div>
+</div>
